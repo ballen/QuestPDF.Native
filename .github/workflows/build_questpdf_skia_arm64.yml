@@ -26,8 +26,6 @@ jobs:
 
 
       - name: Install Skia Build System
-        if: matrix.runtime.name != 'linux-musl-x64'
-        shell: bash
         run: |
           git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
           echo "${PWD}/depot_tools" >> $GITHUB_PATH
@@ -35,7 +33,6 @@ jobs:
 
           
       - name: Build Skia
-        shell: bash
         run: |
           git clone https://github.com/google/skia.git --branch chrome/m140 --single-branch
           cd skia
@@ -113,7 +110,6 @@ jobs:
 
           
       - name: Configure CMake
-        shell: bash
         run: |
           CMAKE_ARGS="
             -S ${PWD}/native 
@@ -130,7 +126,6 @@ jobs:
 
           
       - name: Build CMake
-        shell: bash
         run: >
           cmake 
           --build ${PWD}/native/build 
