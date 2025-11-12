@@ -84,8 +84,6 @@ QUEST_API skia::textlayout::TextStyle *text_style_create(TextStyleConfiguration 
     textStyle->setWordSpacing(configuration.wordSpacing);
     textStyle->setBaselineShift(configuration.baselineOffset);
 
-    textStyle->setFontHinting(SkFontHinting::kNone);
-
     for (auto & fontFeature : configuration.fontFeatures) {
         if (fontFeature.name == nullptr)
             continue;
