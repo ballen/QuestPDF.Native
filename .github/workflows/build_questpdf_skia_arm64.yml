@@ -102,6 +102,10 @@ jobs:
           if [ "${{ matrix.runtime.name }}" = "win-x86" ]; then
             COMMON_ARGS+=' target_cpu="x86"'
           fi
+
+          if [ "${{ matrix.runtime.name }}" = "win-arm64" ]; then
+            COMMON_ARGS='is_official_build=false is_debug=false is_component_build=false skia_use_system_expat=false skia_use_system_libjpeg_turbo=false skia_use_system_libpng=false skia_use_system_libwebp=false skia_use_system_zlib=false skia_use_harfbuzz=true skia_enable_pdf=true skia_enable_discrete_gpu=false skia_use_angle=true skia_enable_spirv_validation=true skia_use_zlib=true skia_use_libjpeg_turbo_decode=true skia_use_libjpeg_turbo_encode=true skia_use_libgrapheme=true target_cpu="arm64"'
+          fi
           
           if [ "${{ matrix.runtime.name }}" = "linux-musl-x64" ]; then
             gn gen out/release --args="$COMMON_ARGS"
